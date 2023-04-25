@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>费益洲的博客</title>
+        <link>https://feiyizhou.github.io/</link>
+        <description>Recent content on 费益洲的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 24 Apr 2023 18:08:41 +0800</lastBuildDate><atom:link href="https://feiyizhou.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>使用Hugo搭建静态博客网站</title>
+        <link>https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
+        <pubDate>Mon, 24 Apr 2023 18:08:41 +0800</pubDate>
+        
+        <guid>https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
+        <description>&lt;img src="https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo.png" alt="Featured image of post 使用Hugo搭建静态博客网站" /&gt;&lt;h1 id=&#34;使用hugo搭建静态博客网站&#34;&gt;使用Hugo搭建静态博客网站&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>Archives</title>
+        <link>https://feiyizhou.github.io/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>About</title>
+        <link>https://feiyizhou.github.io/about/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/about/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>blog</title>
+        <link>https://feiyizhou.github.io/categories/blog/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/blog/</guid>
+        <description>&lt;img src="https://feiyizhou.github.io/categories/blog/hugo.png" alt="Featured image of post blog" /&gt;</description>
+        </item>
+        <item>
+        <title>kernel</title>
+        <link>https://feiyizhou.github.io/categories/kernel/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/kernel/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Links</title>
+        <link>https://feiyizhou.github.io/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/links/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>linux</title>
+        <link>https://feiyizhou.github.io/categories/linux/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/linux/</guid>
+        <description>&lt;img src="https://feiyizhou.github.io/categories/linux/linux.jpg" alt="Featured image of post linux" /&gt;</description>
+        </item>
+        <item>
+        <title>progress</title>
+        <link>https://feiyizhou.github.io/categories/progress/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/progress/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Search</title>
+        <link>https://feiyizhou.github.io/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

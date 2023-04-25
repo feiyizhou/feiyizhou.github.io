@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on 费益洲的博客</title>
+        <link>https://feiyizhou.github.io/categories/</link>
+        <description>Recent content in Categories on 费益洲的博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 24 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://feiyizhou.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>blog</title>
+        <link>https://feiyizhou.github.io/categories/blog/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/blog/</guid>
+        <description>&lt;img src="https://feiyizhou.github.io/categories/blog/hugo.png" alt="Featured image of post blog" /&gt;</description>
+        </item>
+        <item>
+        <title>kernel</title>
+        <link>https://feiyizhou.github.io/categories/kernel/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/kernel/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>linux</title>
+        <link>https://feiyizhou.github.io/categories/linux/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/linux/</guid>
+        <description>&lt;img src="https://feiyizhou.github.io/categories/linux/linux.jpg" alt="Featured image of post linux" /&gt;</description>
+        </item>
+        <item>
+        <title>progress</title>
+        <link>https://feiyizhou.github.io/categories/progress/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://feiyizhou.github.io/categories/progress/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
