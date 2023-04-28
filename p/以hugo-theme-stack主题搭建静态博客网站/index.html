@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='以Hugo-theme-stack主题搭建静态博客网站 1.下载博客模板 1 git clone git@github.com:feiyizhou/hugo-theme-stack-template.git 2.静态文件托管到git page 2.1创建新的Repo 需要注意一下几点：
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='以Hugo-theme-stack主题搭建静态博客网站 下载博客模板 1 git clone git@github.com:feiyizhou/hugo-theme-stack-template.git 静态文件托管到git page 创建新的Repo 需要注意一下几点：
 Repository name的格式必须为${github username}.github.io，这个Repo是用来存放静态文件并托管的，这个名字也是后续的博客访问域名，以本示例为例，Repo名称为feiyizhou.github.io 该Repo必须为public 如上图所示，github会自动部署，这个过程耗时1-2分钟。注意下方的Branch选项，待会push静态文件的时候，就需要push到这个分支中
-2.2修改config.yaml基本配置 2.2.1博客信息配置 需要关注的基本配置如下图所示：
+修改config.yaml基本配置 博客信息配置 需要关注的基本配置如下图所示：
 将baseurl修改为github pages的地址，title即博客名称，修改为自己喜欢的就行
-2.2.2博客头像配置 需要关注的头像配置如下图所示：
+博客头像配置 需要关注的头像配置如下图所示：
 emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle是头像下方的个性签名，可以修改为自己喜欢即可，src就是头像图片文件的部分相对地址，项目相对地址是themes/hugo-theme-stack/assets/img，选个自己的头像放置到此文件夹中，再将配置和头像文件名称修改一致即可（包含扩展名）。
-2.2.3博客评论系统配置 需要关注的博客评论系统的配置如下图所示：
+博客评论系统配置 需要关注的博客评论系统的配置如下图所示：
 如果不想开启评论，将enabled设置为false即可，如果需要开启，可以先查看第三部分内容
-2.3生成静态文件 1 2 3 4 5 6 # 如果系统中未安装hugo，可以查看hugo-theme-stack-template中的Readme.md文件，按照文档步骤安装即可 # 生成静态文件，执行hugo后，会在当前路径下生成public文件夹，静态文件及资源都在这个文件夹中 cd hugo-theme-stack-template &amp;amp;&amp;amp; hugo # 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看 2.4上传静态文件到github 1 2 3 4 5 cp -r hugo-theme-stack-template/public/* feiyizhou.gitub.io/ cd feiyizhou.github.io git add . git commit -m &amp;#34;first commit&amp;#34; git push 2.5访问博客 等待几分钟之后，直接访问github pages提供的访问地址，即可看到自己的博客'>
-<title>使用Hugo搭建静态博客网站</title>
+生成静态文件 1 2 3 4 5 6 # 如果系统中未安装hugo，可以查看hugo-theme-stack-template中的Readme.md文件，按照文档步骤安装即可 # 生成静态文件，执行hugo后，会在当前路径下生成public文件夹，静态文件及资源都在这个文件夹中 cd hugo-theme-stack-template &amp;amp;&amp;amp; hugo # 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看 上传静态文件到github 1 2 3 4 5 cp -r hugo-theme-stack-template/public/* feiyizhou.gitub.io/ cd feiyizhou.github.io git add . git commit -m &amp;#34;first commit&amp;#34; git push 访问博客 等待几分钟之后，直接访问github pages提供的访问地址，即可看到自己的博客'>
+<title>以Hugo-theme-stack主题搭建静态博客网站</title>
 
-<link rel='canonical' href='https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/'>
+<link rel='canonical' href='https://feiyizhou.github.io/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='使用Hugo搭建静态博客网站'>
-<meta property='og:description' content='以Hugo-theme-stack主题搭建静态博客网站 1.下载博客模板 1 git clone git@github.com:feiyizhou/hugo-theme-stack-template.git 2.静态文件托管到git page 2.1创建新的Repo 需要注意一下几点：
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='以Hugo-theme-stack主题搭建静态博客网站'>
+<meta property='og:description' content='以Hugo-theme-stack主题搭建静态博客网站 下载博客模板 1 git clone git@github.com:feiyizhou/hugo-theme-stack-template.git 静态文件托管到git page 创建新的Repo 需要注意一下几点：
 Repository name的格式必须为${github username}.github.io，这个Repo是用来存放静态文件并托管的，这个名字也是后续的博客访问域名，以本示例为例，Repo名称为feiyizhou.github.io 该Repo必须为public 如上图所示，github会自动部署，这个过程耗时1-2分钟。注意下方的Branch选项，待会push静态文件的时候，就需要push到这个分支中
-2.2修改config.yaml基本配置 2.2.1博客信息配置 需要关注的基本配置如下图所示：
+修改config.yaml基本配置 博客信息配置 需要关注的基本配置如下图所示：
 将baseurl修改为github pages的地址，title即博客名称，修改为自己喜欢的就行
-2.2.2博客头像配置 需要关注的头像配置如下图所示：
+博客头像配置 需要关注的头像配置如下图所示：
 emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle是头像下方的个性签名，可以修改为自己喜欢即可，src就是头像图片文件的部分相对地址，项目相对地址是themes/hugo-theme-stack/assets/img，选个自己的头像放置到此文件夹中，再将配置和头像文件名称修改一致即可（包含扩展名）。
-2.2.3博客评论系统配置 需要关注的博客评论系统的配置如下图所示：
+博客评论系统配置 需要关注的博客评论系统的配置如下图所示：
 如果不想开启评论，将enabled设置为false即可，如果需要开启，可以先查看第三部分内容
-2.3生成静态文件 1 2 3 4 5 6 # 如果系统中未安装hugo，可以查看hugo-theme-stack-template中的Readme.md文件，按照文档步骤安装即可 # 生成静态文件，执行hugo后，会在当前路径下生成public文件夹，静态文件及资源都在这个文件夹中 cd hugo-theme-stack-template &amp;amp;&amp;amp; hugo # 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看 2.4上传静态文件到github 1 2 3 4 5 cp -r hugo-theme-stack-template/public/* feiyizhou.gitub.io/ cd feiyizhou.github.io git add . git commit -m &amp;#34;first commit&amp;#34; git push 2.5访问博客 等待几分钟之后，直接访问github pages提供的访问地址，即可看到自己的博客'>
-<meta property='og:url' content='https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/'>
+生成静态文件 1 2 3 4 5 6 # 如果系统中未安装hugo，可以查看hugo-theme-stack-template中的Readme.md文件，按照文档步骤安装即可 # 生成静态文件，执行hugo后，会在当前路径下生成public文件夹，静态文件及资源都在这个文件夹中 cd hugo-theme-stack-template &amp;amp;&amp;amp; hugo # 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看 上传静态文件到github 1 2 3 4 5 cp -r hugo-theme-stack-template/public/* feiyizhou.gitub.io/ cd feiyizhou.github.io git add . git commit -m &amp;#34;first commit&amp;#34; git push 访问博客 等待几分钟之后，直接访问github pages提供的访问地址，即可看到自己的博客'>
+<meta property='og:url' content='https://feiyizhou.github.io/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/'>
 <meta property='og:site_name' content='费益洲的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-04-24T18:08:41&#43;08:00'/><meta property='article:modified_time' content='2023-04-24T18:08:41&#43;08:00'/><meta property='og:image' content='https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo.png' />
-<meta name="twitter:title" content="使用Hugo搭建静态博客网站">
-<meta name="twitter:description" content="以Hugo-theme-stack主题搭建静态博客网站 1.下载博客模板 1 git clone git@github.com:feiyizhou/hugo-theme-stack-template.git 2.静态文件托管到git page 2.1创建新的Repo 需要注意一下几点：
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-04-24T18:08:41&#43;08:00'/><meta property='article:modified_time' content='2023-04-24T18:08:41&#43;08:00'/><meta property='og:image' content='https://feiyizhou.github.io/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo.png' />
+<meta name="twitter:title" content="以Hugo-theme-stack主题搭建静态博客网站">
+<meta name="twitter:description" content="以Hugo-theme-stack主题搭建静态博客网站 下载博客模板 1 git clone git@github.com:feiyizhou/hugo-theme-stack-template.git 静态文件托管到git page 创建新的Repo 需要注意一下几点：
 Repository name的格式必须为${github username}.github.io，这个Repo是用来存放静态文件并托管的，这个名字也是后续的博客访问域名，以本示例为例，Repo名称为feiyizhou.github.io 该Repo必须为public 如上图所示，github会自动部署，这个过程耗时1-2分钟。注意下方的Branch选项，待会push静态文件的时候，就需要push到这个分支中
-2.2修改config.yaml基本配置 2.2.1博客信息配置 需要关注的基本配置如下图所示：
+修改config.yaml基本配置 博客信息配置 需要关注的基本配置如下图所示：
 将baseurl修改为github pages的地址，title即博客名称，修改为自己喜欢的就行
-2.2.2博客头像配置 需要关注的头像配置如下图所示：
+博客头像配置 需要关注的头像配置如下图所示：
 emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle是头像下方的个性签名，可以修改为自己喜欢即可，src就是头像图片文件的部分相对地址，项目相对地址是themes/hugo-theme-stack/assets/img，选个自己的头像放置到此文件夹中，再将配置和头像文件名称修改一致即可（包含扩展名）。
-2.2.3博客评论系统配置 需要关注的博客评论系统的配置如下图所示：
+博客评论系统配置 需要关注的博客评论系统的配置如下图所示：
 如果不想开启评论，将enabled设置为false即可，如果需要开启，可以先查看第三部分内容
-2.3生成静态文件 1 2 3 4 5 6 # 如果系统中未安装hugo，可以查看hugo-theme-stack-template中的Readme.md文件，按照文档步骤安装即可 # 生成静态文件，执行hugo后，会在当前路径下生成public文件夹，静态文件及资源都在这个文件夹中 cd hugo-theme-stack-template &amp;amp;&amp;amp; hugo # 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看 2.4上传静态文件到github 1 2 3 4 5 cp -r hugo-theme-stack-template/public/* feiyizhou.gitub.io/ cd feiyizhou.github.io git add . git commit -m &amp;#34;first commit&amp;#34; git push 2.5访问博客 等待几分钟之后，直接访问github pages提供的访问地址，即可看到自己的博客"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://feiyizhou.github.io/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo.png' />
+生成静态文件 1 2 3 4 5 6 # 如果系统中未安装hugo，可以查看hugo-theme-stack-template中的Readme.md文件，按照文档步骤安装即可 # 生成静态文件，执行hugo后，会在当前路径下生成public文件夹，静态文件及资源都在这个文件夹中 cd hugo-theme-stack-template &amp;amp;&amp;amp; hugo # 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看 上传静态文件到github 1 2 3 4 5 cp -r hugo-theme-stack-template/public/* feiyizhou.gitub.io/ cd feiyizhou.github.io git add . git commit -m &amp;#34;first commit&amp;#34; git push 访问博客 等待几分钟之后，直接访问github pages提供的访问地址，即可看到自己的博客"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://feiyizhou.github.io/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo.png' />
     </head>
     <body class="
     article-page
@@ -252,27 +252,27 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#1下载博客模板">1.下载博客模板</a></li>
-    <li><a href="#2静态文件托管到git-page">2.静态文件托管到git page</a>
+    <li><a href="#下载博客模板">下载博客模板</a></li>
+    <li><a href="#静态文件托管到git-page">静态文件托管到git page</a>
       <ol>
-        <li><a href="#21创建新的repo">2.1创建新的Repo</a></li>
-        <li><a href="#22修改configyaml基本配置">2.2修改<code>config.yaml</code>基本配置</a>
+        <li><a href="#创建新的repo">创建新的Repo</a></li>
+        <li><a href="#修改configyaml基本配置">修改<code>config.yaml</code>基本配置</a>
           <ol>
-            <li><a href="#221博客信息配置">2.2.1博客信息配置</a></li>
-            <li><a href="#222博客头像配置">2.2.2博客头像配置</a></li>
-            <li><a href="#223博客评论系统配置">2.2.3博客评论系统配置</a></li>
+            <li><a href="#博客信息配置">博客信息配置</a></li>
+            <li><a href="#博客头像配置">博客头像配置</a></li>
+            <li><a href="#博客评论系统配置">博客评论系统配置</a></li>
           </ol>
         </li>
-        <li><a href="#23生成静态文件">2.3生成静态文件</a></li>
-        <li><a href="#24上传静态文件到github">2.4上传静态文件到<code>github</code></a></li>
-        <li><a href="#25访问博客">2.5访问博客</a></li>
+        <li><a href="#生成静态文件">生成静态文件</a></li>
+        <li><a href="#上传静态文件到github">上传静态文件到<code>github</code></a></li>
+        <li><a href="#访问博客">访问博客</a></li>
       </ol>
     </li>
-    <li><a href="#3配置gitalk">3.配置<code>gitalk</code></a>
+    <li><a href="#配置gitalk">配置<code>gitalk</code></a>
       <ol>
-        <li><a href="#31-创建oauth-app">3.1 创建<code>OAuth app</code></a></li>
-        <li><a href="#32-配置configyaml">3.2 配置<code>config.yaml</code></a></li>
-        <li><a href="#33-更新配置">3.3 更新配置</a></li>
+        <li><a href="#创建oauth-app">创建<code>OAuth app</code></a></li>
+        <li><a href="#配置configyaml">配置<code>config.yaml</code></a></li>
+        <li><a href="#更新配置">更新配置</a></li>
       </ol>
     </li>
   </ol>
@@ -289,13 +289,13 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
-                <img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo_hu7c194d5125a81be1ec95e5d9c0152203_38970_800x0_resize_box_3.png"
-                        srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo_hu7c194d5125a81be1ec95e5d9c0152203_38970_800x0_resize_box_3.png 800w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo_hu7c194d5125a81be1ec95e5d9c0152203_38970_1600x0_resize_box_3.png 1600w"
+            <a href="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">
+                <img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo_hu7c194d5125a81be1ec95e5d9c0152203_38970_800x0_resize_box_3.png"
+                        srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo_hu7c194d5125a81be1ec95e5d9c0152203_38970_800x0_resize_box_3.png 800w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/hugo_hu7c194d5125a81be1ec95e5d9c0152203_38970_1600x0_resize_box_3.png 1600w"
                         width="800" 
                         height="237" 
                         loading="lazy"
-                        alt="Featured image of post 使用Hugo搭建静态博客网站" />
+                        alt="Featured image of post 以Hugo-theme-stack主题搭建静态博客网站" />
                 
             </a>
         </div>
@@ -306,7 +306,7 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">使用Hugo搭建静态博客网站</a>
+            <a href="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/">以Hugo-theme-stack主题搭建静态博客网站</a>
         </h2>
     
         
@@ -359,7 +359,7 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
     
     
     <h1 id="以hugo-theme-stack主题搭建静态博客网站">以Hugo-theme-stack主题搭建静态博客网站</h1>
-<h2 id="1下载博客模板">1.下载博客模板</h2>
+<h2 id="下载博客模板">下载博客模板</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -368,12 +368,12 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone git@github.com:feiyizhou/hugo-theme-stack-template.git
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="2静态文件托管到git-page">2.静态文件托管到git page</h2>
-<h3 id="21创建新的repo">2.1创建新的Repo</h3>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_new_repo.png"
+</div><h2 id="静态文件托管到git-page">静态文件托管到git page</h2>
+<h3 id="创建新的repo">创建新的Repo</h3>
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_new_repo.png"
 	width="833"
 	height="901"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_new_repo_hu138e6f445e9a81c3fd4aab419ac4eae9_97919_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_new_repo_hu138e6f445e9a81c3fd4aab419ac4eae9_97919_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_new_repo_hu138e6f445e9a81c3fd4aab419ac4eae9_97919_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_new_repo_hu138e6f445e9a81c3fd4aab419ac4eae9_97919_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="create new repo"
@@ -389,10 +389,10 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 <li><code>Repository name</code>的格式必须为<code>${github username}.github.io</code>，这个<code>Repo</code>是用来存放静态文件并托管的，这个名字也是后续的博客访问域名，以本示例为例，<code>Repo</code>名称为<code>feiyizhou.github.io</code></li>
 <li>该<code>Repo</code>必须为<code>public</code></li>
 </ul>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github_pages.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github_pages.png"
 	width="1235"
 	height="1251"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github_pages_hu146e7a5fa145c23f8ca098e043b930c8_247050_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github_pages_hu146e7a5fa145c23f8ca098e043b930c8_247050_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github_pages_hu146e7a5fa145c23f8ca098e043b930c8_247050_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/github_pages_hu146e7a5fa145c23f8ca098e043b930c8_247050_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -402,13 +402,13 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 	
 ></p>
 <p>如上图所示，<code>github</code>会自动部署，这个过程耗时1-2分钟。注意下方的<code>Branch</code>选项，待会<code>push</code>静态文件的时候，就需要<code>push</code>到这个分支中</p>
-<h3 id="22修改configyaml基本配置">2.2修改<code>config.yaml</code>基本配置</h3>
-<h4 id="221博客信息配置">2.2.1博客信息配置</h4>
+<h3 id="修改configyaml基本配置">修改<code>config.yaml</code>基本配置</h3>
+<h4 id="博客信息配置">博客信息配置</h4>
 <p>需要关注的基本配置如下图所示：</p>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_basic_config.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_basic_config.png"
 	width="627"
 	height="120"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_basic_config_hue704bd35a0968becfce3956aaf863fbb_11368_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_basic_config_hue704bd35a0968becfce3956aaf863fbb_11368_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_basic_config_hue704bd35a0968becfce3956aaf863fbb_11368_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_basic_config_hue704bd35a0968becfce3956aaf863fbb_11368_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -418,12 +418,12 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 	
 ></p>
 <p>将<code>baseurl</code>修改为<code>github pages</code>的地址，<code>title</code>即博客名称，修改为自己喜欢的就行</p>
-<h4 id="222博客头像配置">2.2.2博客头像配置</h4>
+<h4 id="博客头像配置">博客头像配置</h4>
 <p>需要关注的头像配置如下图所示：</p>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_avatar_config.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_avatar_config.png"
 	width="501"
 	height="164"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_avatar_config_hu5c8dd5406980f4caa46f8d285a1508ef_12063_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_avatar_config_hu5c8dd5406980f4caa46f8d285a1508ef_12063_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_avatar_config_hu5c8dd5406980f4caa46f8d285a1508ef_12063_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_avatar_config_hu5c8dd5406980f4caa46f8d285a1508ef_12063_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -433,12 +433,12 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 	
 ></p>
 <p><code>emoji</code>是头像右下角的表情，可以修改为自己喜欢即可，<code>subtitle</code>是头像下方的个性签名，可以修改为自己喜欢即可，<code>src</code>就是头像图片文件的部分相对地址，项目相对地址是<code>themes/hugo-theme-stack/assets/img</code>，选个自己的头像放置到此文件夹中，再将配置和头像文件名称修改一致即可（包含扩展名）。</p>
-<h4 id="223博客评论系统配置">2.2.3博客评论系统配置</h4>
+<h4 id="博客评论系统配置">博客评论系统配置</h4>
 <p>需要关注的博客评论系统的配置如下图所示：</p>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/comments_config.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/comments_config.png"
 	width="331"
 	height="311"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/comments_config_hub102c7b4d826dae22219f94db46d0920_22200_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/comments_config_hub102c7b4d826dae22219f94db46d0920_22200_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/comments_config_hub102c7b4d826dae22219f94db46d0920_22200_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/comments_config_hub102c7b4d826dae22219f94db46d0920_22200_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -448,7 +448,7 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 	
 ></p>
 <p>如果不想开启评论，将<code>enabled</code>设置为<code>false</code>即可，如果需要开启，可以先查看第三部分内容</p>
-<h3 id="23生成静态文件">2.3生成静态文件</h3>
+<h3 id="生成静态文件">生成静态文件</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -467,7 +467,7 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 </span></span><span class="line"><span class="cl"><span class="c1"># 另：hugo server 命令可以在本地启动博客，访问localhost:1313即可查看</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="24上传静态文件到github">2.4上传静态文件到<code>github</code></h3>
+</div><h3 id="上传静态文件到github">上传静态文件到<code>github</code></h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -484,17 +484,17 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 </span></span><span class="line"><span class="cl">git push
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="25访问博客">2.5访问博客</h3>
+</div><h3 id="访问博客">访问博客</h3>
 <p>等待几分钟之后，直接访问<code>github pages</code>提供的访问地址，即可看到自己的博客</p>
-<h2 id="3配置gitalk">3.配置<code>gitalk</code></h2>
-<h3 id="31-创建oauth-app">3.1 创建<code>OAuth app</code></h3>
+<h2 id="配置gitalk">配置<code>gitalk</code></h2>
+<h3 id="创建oauth-app">创建<code>OAuth app</code></h3>
 <ol>
 <li>进入配置页面</li>
 </ol>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/settings.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/settings.png"
 	width="391"
 	height="564"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/settings_huf6f7385f54a3a537ed367212ad0da080_60537_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/settings_huf6f7385f54a3a537ed367212ad0da080_60537_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/settings_huf6f7385f54a3a537ed367212ad0da080_60537_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/settings_huf6f7385f54a3a537ed367212ad0da080_60537_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -506,10 +506,10 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 <ol start="2">
 <li>点击左下方<code>Developer settings</code></li>
 </ol>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/Developer_settings.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/Developer_settings.png"
 	width="364"
 	height="221"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/Developer_settings_hu934af795ba577cacc7578a72c474b21c_13022_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/Developer_settings_hu934af795ba577cacc7578a72c474b21c_13022_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/Developer_settings_hu934af795ba577cacc7578a72c474b21c_13022_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/Developer_settings_hu934af795ba577cacc7578a72c474b21c_13022_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -521,10 +521,10 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 <ol start="3">
 <li>创建OAuth app配置</li>
 </ol>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app.png"
 	width="2422"
 	height="930"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_hu15723d5d8a70177e6a121291f55718c1_131824_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_hu15723d5d8a70177e6a121291f55718c1_131824_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_hu15723d5d8a70177e6a121291f55718c1_131824_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_hu15723d5d8a70177e6a121291f55718c1_131824_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -533,10 +533,10 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 		data-flex-basis="625px"
 	
 ></p>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_1.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_1.png"
 	width="2338"
 	height="1390"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_1_hubde4f0de276b603f63123f51a62722e0_255497_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_1_hubde4f0de276b603f63123f51a62722e0_255497_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_1_hubde4f0de276b603f63123f51a62722e0_255497_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_oauth_app_1_hubde4f0de276b603f63123f51a62722e0_255497_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -545,10 +545,10 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 		data-flex-basis="403px"
 	
 ></p>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_secret.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_secret.png"
 	width="1892"
 	height="1678"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_secret_hubb3583cd1dcfd41c86325829aeb740cf_229188_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_secret_hubb3583cd1dcfd41c86325829aeb740cf_229188_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_secret_hubb3583cd1dcfd41c86325829aeb740cf_229188_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/create_secret_hubb3583cd1dcfd41c86325829aeb740cf_229188_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -558,12 +558,12 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 	
 ></p>
 <p>创建好<code>client secret</code>后，可以复制到别的地方（只展现一次，如果没复制的话，得再重新生成一个），然后点击页面最下方的<code>Update</code>按钮，使得生成的秘钥配置生效。</p>
-<h3 id="32-配置configyaml">3.2 配置<code>config.yaml</code></h3>
+<h3 id="配置configyaml">配置<code>config.yaml</code></h3>
 <p>需要关注的<code>gitalk</code>的相关配置如下图所示：</p>
-<p><img src="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_gitalk_config.png"
+<p><img src="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_gitalk_config.png"
 	width="796"
 	height="236"
-	srcset="/p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_gitalk_config_hu6e13ba6eacd9590e0a58c56c6f73399c_23020_480x0_resize_box_3.png 480w, /p/%E4%BD%BF%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_gitalk_config_hu6e13ba6eacd9590e0a58c56c6f73399c_23020_1024x0_resize_box_3.png 1024w"
+	srcset="/p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_gitalk_config_hu6e13ba6eacd9590e0a58c56c6f73399c_23020_480x0_resize_box_3.png 480w, /p/%E4%BB%A5hugo-theme-stack%E4%B8%BB%E9%A2%98%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/edit_gitalk_config_hu6e13ba6eacd9590e0a58c56c6f73399c_23020_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 	
@@ -578,7 +578,7 @@ emoji是头像右下角的表情，可以修改为自己喜欢即可，subtitle�
 <li><code>repo</code>：这个仓库是用来存放评论内容的，填写创建<code>OAuth App</code>时填写的<code>repo</code>名称即可</li>
 <li><code>cilentID</code>和<code>clientSecret</code>即创建<code>OAuth App</code>后生成的<code>ID</code>和<code>Secret</code>，填入即可</li>
 </ul>
-<h3 id="33-更新配置">3.3 更新配置</h3>
+<h3 id="更新配置">更新配置</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
