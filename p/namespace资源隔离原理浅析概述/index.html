@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='从内核源码函数顺序过程分析Linux进程创建的整理流程'>
-<title>Linux进程创建流程</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='容器引擎通过Linux内核技术（Namespace）对容器的资源进行隔离，本文通过阅读Linux进程内核源码，浅析Namespace隔离资源的原理'>
+<title>Namespace资源隔离原理浅析(概述)</title>
 
-<link rel='canonical' href='https://feiyizhou.github.io/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/'>
+<link rel='canonical' href='https://feiyizhou.github.io/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Linux进程创建流程'>
-<meta property='og:description' content='从内核源码函数顺序过程分析Linux进程创建的整理流程'>
-<meta property='og:url' content='https://feiyizhou.github.io/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Namespace资源隔离原理浅析(概述)'>
+<meta property='og:description' content='容器引擎通过Linux内核技术（Namespace）对容器的资源进行隔离，本文通过阅读Linux进程内核源码，浅析Namespace隔离资源的原理'>
+<meta property='og:url' content='https://feiyizhou.github.io/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/'>
 <meta property='og:site_name' content='费益洲的博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Linux' /><meta property='article:tag' content='kernel' /><meta property='article:tag' content='progress' /><meta property='article:published_time' content='2023-04-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-04-24T00:00:00&#43;00:00'/><meta property='og:image' content='https://feiyizhou.github.io/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/linux.jpg' />
-<meta name="twitter:title" content="Linux进程创建流程">
-<meta name="twitter:description" content="从内核源码函数顺序过程分析Linux进程创建的整理流程"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://feiyizhou.github.io/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/linux.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='container' /><meta property='article:tag' content='kernel' /><meta property='article:published_time' content='2023-05-04T15:43:40&#43;08:00'/><meta property='article:modified_time' content='2023-05-04T15:43:40&#43;08:00'/><meta property='og:image' content='https://feiyizhou.github.io/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/namespace.png' />
+<meta name="twitter:title" content="Namespace资源隔离原理浅析(概述)">
+<meta name="twitter:description" content="容器引擎通过Linux内核技术（Namespace）对容器的资源进行隔离，本文通过阅读Linux进程内核源码，浅析Namespace隔离资源的原理"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://feiyizhou.github.io/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/namespace.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32/png">
@@ -211,52 +211,19 @@
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">目录</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#进程状态">进程状态</a></li>
-    <li><a href="#进程pid">进程pid</a></li>
-    <li><a href="#进程地址空间">进程地址空间</a></li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/">
-                <img src="/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/linux_hu03929ada147132d5fefd3253b2a570db_16612_800x0_resize_q75_box.jpg"
-                        srcset="/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/linux_hu03929ada147132d5fefd3253b2a570db_16612_800x0_resize_q75_box.jpg 800w, /p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/linux_hu03929ada147132d5fefd3253b2a570db_16612_1600x0_resize_q75_box.jpg 1600w"
+            <a href="/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/">
+                <img src="/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/namespace_hu1dbac644a90fa677b2242d2f6aba380f_67916_800x0_resize_box_3.png"
+                        srcset="/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/namespace_hu1dbac644a90fa677b2242d2f6aba380f_67916_800x0_resize_box_3.png 800w, /p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/namespace_hu1dbac644a90fa677b2242d2f6aba380f_67916_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="565" 
+                        height="210" 
                         loading="lazy"
-                        alt="Featured image of post Linux进程创建流程" />
+                        alt="Featured image of post Namespace资源隔离原理浅析(概述)" />
                 
             </a>
         </div>
@@ -266,16 +233,12 @@
     
     <header class="article-category">
         
-            <a href="/categories/linux/" >
-                Linux
+            <a href="/categories/%E5%AE%B9%E5%99%A8%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/" >
+                容器核心技术
             </a>
         
-            <a href="/categories/kernel/" >
-                kernel
-            </a>
-        
-            <a href="/categories/progress/" >
-                progress
+            <a href="/categories/namespace/" >
+                Namespace
             </a>
         
     </header>
@@ -283,12 +246,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/linux%E8%BF%9B%E7%A8%8B%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B/">Linux进程创建流程</a>
+            <a href="/p/namespace%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BB%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E6%A6%82%E8%BF%B0/">Namespace资源隔离原理浅析(概述)</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            从内核源码函数顺序过程分析Linux进程创建的整理流程
+            容器引擎通过Linux内核技术（Namespace）对容器的资源进行隔离，本文通过阅读Linux进程内核源码，浅析Namespace隔离资源的原理
         </h3>
         
     </div>
@@ -309,7 +272,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 24, 2023</time>
+                <time class="article-time--published">May 04, 2023</time>
             </div>
         
 
@@ -324,7 +287,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -339,8 +302,37 @@
     <section class="article-content">
     
     
-    <h1 id="进程的结构体定义">进程的结构体定义</h1>
-<p>在版本为3.10.0-1160.el7的内核源码中，进程的结构体定义在文件<code>include/linux/sched.h</code>中，省略部分字段定义，本文关心的属性定义如下所示：</p>
+    <h1 id="namespace资源隔离原理浅析">Namespace资源隔离原理浅析</h1>
+<p>单个容器本身，其本质就是Linux系统中的一个进程，但是在容器进程环境中，我们所使用的环境和宿主机本身其实是两套不同的环境。这主要是因为容器技术实现了资源层面上的限制和隔离，这两个功能分别依赖于Linux系统内核中所提供的cgroup和Namespace技术。本文主要讨论Namespace隔离Linux进程资源的原理，cgroup限制Linux资源的原理将在另一篇博文中做介绍。</p>
+<p>总体来说，Namespace是Linux内核的一项特性，它可以对内核资源进行区分，使得一个进程或同一组进程只能看到一组资源，而另一组进程看到的是不同的资源。从版本号为<code>3.8</code>的内核开始，目录<code>/proc/[pid]/ns</code>目录下会展示进程所属的所有Namespace信息，使用<code>ls -al /proc/$$/ns</code>查看当前进程的所属Namespace信息，如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@localhost ~<span class="o">]</span><span class="c1"># ls -al /proc/$$/ns</span>
+</span></span><span class="line"><span class="cl">总用量 <span class="m">0</span>
+</span></span><span class="line"><span class="cl">dr-x--x--x. <span class="m">2</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 .
+</span></span><span class="line"><span class="cl">dr-xr-xr-x. <span class="m">9</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 15:06 ..
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 ipc -&gt; ipc:<span class="o">[</span>4026531839<span class="o">]</span>
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 mnt -&gt; mnt:<span class="o">[</span>4026531840<span class="o">]</span>
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 net -&gt; net:<span class="o">[</span>4026531956<span class="o">]</span>
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 pid -&gt; pid:<span class="o">[</span>4026531836<span class="o">]</span>
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 user -&gt; user:<span class="o">[</span>4026531837<span class="o">]</span>
+</span></span><span class="line"><span class="cl">lrwxrwxrwx. <span class="m">1</span> root root <span class="m">0</span> 5月   <span class="m">4</span> 17:29 uts -&gt; uts:<span class="o">[</span>4026531838<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>需要注意的是，这些Namespace文件都是链接文件，文件的内容格式为<code>type:[inode number]</code>，其中<code>type</code>为Namespace的类型，<code>inode number</code>则是用来标识唯一一个Namespace，也可以将这个<code>inode number</code>理解为Namespace的ID。如果两个进程的某个Namespace同时指向了同一个链接文件，说明这两个进程相关的资源在同一个Namespace中。</p>
+<p>而在Linux内核源码中，进程结构体<code>task_struct</code>很好的体现了进程和Namespace的关联关系。我们以<code>linux-3.10.0-1160.el7</code>版本的内核源码作为示例代码，<code>task_struct</code>的具体定义如下所示：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -374,44 +366,97 @@
 </span><span class="lnt">29
 </span><span class="lnt">30
 </span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-h" data-lang="h"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.1 进程状态 
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// file:include/linux/sched.h，只贴出本文关注的属性
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="n">task_struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程状态
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">volatile</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>	<span class="cm">/* -1 unrunnable, 0 runnable, &gt;0 stopped */</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.2 进程线程的pid
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">pid_t</span> <span class="n">tgid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.3 进程树关系：父进程、子进程、兄弟进程
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程线程的pid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">pid_t</span> <span class="n">pid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="kt">pid_t</span> <span class="n">tgid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程树关系描述：父进程、子进程、兄弟进程
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">task_struct</span> <span class="n">__rcu</span> <span class="o">*</span><span class="n">real_parent</span><span class="p">;</span> <span class="cm">/* real parent process */</span>
 </span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span> <span class="n">__rcu</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span> <span class="cm">/* recipient of SIGCHLD, wait4() reports */</span>
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">list_head</span> <span class="n">children</span><span class="p">;</span> 
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">list_head</span> <span class="n">sibling</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">group_leader</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * children/sibling forms the list of my natural children
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">list_head</span> <span class="n">children</span><span class="p">;</span>	<span class="cm">/* list of my children */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">list_head</span> <span class="n">sibling</span><span class="p">;</span>	<span class="cm">/* linkage in my parent&#39;s children list */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">group_leader</span><span class="p">;</span>	<span class="cm">/* threadgroup leader */</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.4 进程调度优先级
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程调度优先级
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="n">prio</span><span class="p">,</span> <span class="n">static_prio</span><span class="p">,</span> <span class="n">normal_prio</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rt_priority</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.5 进程地址空间
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程地址空间
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">mm_struct</span> <span class="o">*</span><span class="n">mm</span><span class="p">,</span> <span class="o">*</span><span class="n">active_mm</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.6 进程文件系统信息（当前目录等）
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">fs_struct</span> <span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.7 进程打开的文件信息
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程文件系统信息（当前目录）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">fs_struct</span> <span class="o">*</span><span class="n">fs</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程打开的文件信息
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">files_struct</span> <span class="o">*</span><span class="n">files</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">//2.8 namespaces 
+</span></span><span class="line"><span class="cl">    <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 进程所属的Namespace
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">nsproxy</span> <span class="o">*</span><span class="n">nsproxy</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="进程状态">进程状态</h2>
-<h2 id="进程pid">进程pid</h2>
-<h2 id="进程地址空间">进程地址空间</h2>
+</div><p>我们进一步关注和<code>Namespace</code>直接相关的最后一个属性<code>nsproxy</code>，其具体定义如下所示：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// file:inclue/linux/nsproxy.h
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">struct</span> <span class="n">nsproxy</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">atomic_t</span> <span class="n">count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">uts_namespace</span> <span class="o">*</span><span class="n">uts_ns</span><span class="p">;</span> <span class="c1">// 提供主机名隔离能力
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">ipc_namespace</span> <span class="o">*</span><span class="n">ipc_ns</span><span class="p">;</span> <span class="c1">// 提供进程间通信的隔离能力
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">mnt_namespace</span> <span class="o">*</span><span class="n">mnt_ns</span><span class="p">;</span> <span class="c1">// 提供磁盘挂载点和文件系统的隔离能力
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">pid_namespace</span> <span class="o">*</span><span class="n">pid_ns</span><span class="p">;</span> <span class="c1">// 提供进程隔离能力
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">struct</span> <span class="n">net</span> 	     <span class="o">*</span><span class="n">net_ns</span><span class="p">;</span>     <span class="c1">// 提供网络隔离能力
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从内核源码可以看出，每当一个进程创建完成后，各类Namespace都会作为这个进程的属性伴随整个进程的生命周期，直到进程被杀死，对应的Namespace也就会被释放。容器化技术中，通过Namespace技术实现容器运行环境隔离的本质，其实是Linux中，对进程运行环境的隔离。到此为止，已经大概明白了容器隔离的本质，但各类Namespace实现各类资源的隔离本质还需要继续深挖。</p>
 
 </section>
 
@@ -420,11 +465,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/linux/">Linux</a>
+            <a href="/tags/container/">container</a>
         
             <a href="/tags/kernel/">kernel</a>
-        
-            <a href="/tags/progress/">progress</a>
         
     </section>
 
